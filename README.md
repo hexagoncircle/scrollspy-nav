@@ -26,4 +26,8 @@ Wrap a list of anchor links with the `<scrollspy-nav>` custom element.
     </li>
   </ul>
 </scrollspy-nav>
+
+<article id="section-1"></article>
+<article id="section-2"></article>
+<article id="section-3"></article>
 ```
