@@ -4,6 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>scrollspy-nav</title>
+    <meta
+      name="description"
+      content="A WebC component for sticky-positioned page anchor
+    navigation menus"
+    />
     <style @raw="getBundle('css')" webc:keep></style>
   </head>
   <body>
