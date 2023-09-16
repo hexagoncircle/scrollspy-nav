@@ -1,0 +1,19 @@
+{
+  "name": "@hexagoncircle/scrollspy-nav",
+  "version": "1.0.0",
+  "description": "Navigation web component with active marker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hexagoncircle/scrollspy-nav.git"
+  },
+  "author": {
+    "name": "Ryan Mulligan",
+    "email": "hey@ryanmulligan.dev",
+    "url": "https://ryanmulligan.dev"
+  },
+  "license": "ISC"
+}
