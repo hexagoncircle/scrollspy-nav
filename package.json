@@ -4,7 +4,7 @@
   "description": "Navigation web component with active marker",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "eleventy --serve"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
     "email": "hey@ryanmulligan.dev",
     "url": "https://ryanmulligan.dev"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-plugin-webc": "^0.11.1"
+  }
 }

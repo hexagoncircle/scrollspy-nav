@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>scrollspy-nav</title>
+    <style @raw="getBundle('css')" webc:keep></style>
+  </head>
+  <body>
+    <template webc:nokeep @raw="content"></template>
+    <script @raw="getBundle('js')" webc:keep></script>
+  </body>
+</html>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    font-family: system-ui;
+  }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+</style>
