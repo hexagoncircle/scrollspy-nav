@@ -254,7 +254,7 @@
     top: var(--scrollspy-nav-marker-top, initial);
     bottom: var(--scrollspy-nav-marker-bottom, 0);
     left: 0;
-    background-color: var(--scrollspy-nav-marker-color, currentColor);
+    background-color: var(--scrollspy-nav-marker-color, currentcolor);
     z-index: -1;
     width: 1px;
     height: var(--scrollspy-nav-marker-height, 4px);
