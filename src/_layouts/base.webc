@@ -25,7 +25,10 @@
   }
 
   body {
+    --page-gutters: clamp(1rem, 6vw, 2rem);
     font-family: system-ui;
+    margin: 0;
+    padding-inline: var(--page-gutters);
   }
 
   p {

@@ -13,8 +13,7 @@
     overflow-x: auto;
     overscroll-behavior-x: contain;
     overflow-y: visible;
-    padding-inline: 1rem;
-    max-width: 100%;
+    max-inline-size: 100%;
     background-color: white;
   }
 
@@ -66,10 +65,14 @@ header {
     margin-block-start: 6rem;
   }
 
+  scrollspy-nav {
+    margin-inline: calc(var(--page-gutters) * -1);
+    padding-inline: var(--page-gutters);
+  }
+
   article {
     scroll-margin-top: 6rem;
-    padding-inline: 1rem;
-    max-width: 65ch;
+    inline-size: min(65ch, 100%);
     margin-inline: auto;
   }
 
@@ -109,7 +112,10 @@ header {
   }
 
   body {
+    --page-gutters: clamp(1rem, 6vw, 2rem);
     font-family: system-ui;
+    margin: 0;
+    padding-inline: var(--page-gutters);
   }
 
   p {

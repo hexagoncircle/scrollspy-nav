@@ -480,10 +480,14 @@ layout: base
     margin-block-start: 6rem;
   }
 
+  scrollspy-nav {
+    margin-inline: calc(var(--page-gutters) * -1);
+    padding-inline: var(--page-gutters);
+  }
+
   article {
     scroll-margin-top: 6rem;
-    padding-inline: 1rem;
-    max-width: 65ch;
+    inline-size: min(65ch, 100%);
     margin-inline: auto;
   }
 
