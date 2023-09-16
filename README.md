@@ -8,7 +8,7 @@ A web component for sticky-positioned page anchor navigation menus. It observes 
 
 This currently exists as a [webc](https://www.11ty.dev/docs/languages/webc/) component for use in 11ty projects. However, the component script and styles can be ported into any project.
 
-## Example use
+## Example
 
 Wrap a list of anchor links with the `<scrollspy-nav>` custom element.
 
