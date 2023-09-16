@@ -221,8 +221,6 @@
     display: flex;
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    overflow-y: visible;
-    max-inline-size: 100%;
     background-color: white;
   }
 
