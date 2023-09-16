@@ -232,7 +232,6 @@
   }
 
   scrollspy-nav > * {
-    box-sizing: border-box;
     margin: 0 auto;
     padding: 0;
     display: flex;
@@ -240,7 +239,7 @@
     list-style: none;
   }
 
-  scrollspy-nav > * > * {
+  scrollspy-nav * {
     position: relative;
   }
 

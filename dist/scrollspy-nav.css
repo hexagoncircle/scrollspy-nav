@@ -1,0 +1,51 @@
+scrollspy-nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  overflow-y: visible;
+  padding-inline: 1rem;
+  max-width: 100%;
+  background-color: white;
+}
+
+scrollspy-nav::-webkit-scrollbar {
+  display: none;
+}
+
+scrollspy-nav > * {
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+scrollspy-nav * {
+  position: relative;
+}
+
+scrollspy-nav a {
+  display: block;
+  margin-block: 1rem;
+  text-decoration: none;
+  white-space: nowrap;
+  color: royalblue;
+}
+
+scrollspy-nav [aria-selected] {
+  color: currentcolor;
+}
+
+[data-marker] {
+  position: absolute;
+  top: var(--scrollspy-marker-top, initial);
+  bottom: var(--scrollspy-marker-bottom, 0);
+  left: 0;
+  background-color: var(--scrollspy-marker-color, currentColor);
+  z-index: -1;
+  width: 1px;
+  height: var(--scrollspy-marker-height, 4px);
+  transform-origin: left;
+}

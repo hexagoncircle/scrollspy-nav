@@ -6,9 +6,9 @@ A web component for sticky-positioned page anchor navigation menus. It observes 
 - The marker element is configurable through CSS custom properties.
 - If an active menu item overflows the viewport, it will be scrolled into view when its related section is visible.
 
-## How to use
+This currently exists as a [webc](https://www.11ty.dev/docs/languages/webc/) component for use in 11ty projects. However, the component script and styles can be ported into any project.
 
-Add `webc` component in an 11ty + webc project _or_ add the component CSS and JS to a page.
+## Example use
 
 Wrap a list of anchor links with the `<scrollspy-nav>` custom element.
 
