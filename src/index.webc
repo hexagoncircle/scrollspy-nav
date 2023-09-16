@@ -5,7 +5,7 @@ layout: base
 <header>
   <div aria-hidden="true" style="font-size: 2em">👀</div>
   <h1>scrollspy navigation component</h1>
-  <p>with a configurable animated marker</p>
+  <p>WebC component for sticky-positioned page anchor menus</p>
 </header>
 
 <main>
