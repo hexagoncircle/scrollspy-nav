@@ -1,7 +1,7 @@
 {
   "name": "@hexagoncircle/scrollspy-nav",
   "version": "1.0.0",
-  "description": "Navigation web component with active marker",
+  "description": "WebC component for sticky-positioned page anchor menus",
   "main": "index.js",
   "scripts": {
     "start": "eleventy --serve"
