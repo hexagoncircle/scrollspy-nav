@@ -45,6 +45,9 @@
     }
 
     animateMarker(target) {
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
       const last = target.getBoundingClientRect();
       const first = this.activeLink?.getBoundingClientRect() || last;
       const deltaX = first.left - last.left;
@@ -59,7 +62,7 @@
           { transform: `translateX(0) scaleX(${last.width})` },
         ],
         {
-          duration: this.duration,
+          duration: reducedMotion ? 0 : this.duration,
           easing: this.ease,
           fill: "forwards",
         }
