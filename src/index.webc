@@ -479,6 +479,10 @@ layout: base
     margin-block: 25vh;
   }
 
+  main {
+    margin-block-end: 50vh;
+  }
+
   section + section {
     margin-block-start: 6rem;
   }
