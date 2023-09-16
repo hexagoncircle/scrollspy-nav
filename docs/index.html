@@ -40,7 +40,7 @@
     outline-offset: 4px;
   }
 
-  scrollspy-nav [aria-selected] {
+  scrollspy-nav [aria-current="true"] {
     color: currentcolor;
   }
 
@@ -786,8 +786,8 @@ header {
     }
 
     setActiveLink(target) {
-      this.activeLink?.removeAttribute("aria-selected");
-      target.setAttribute("aria-selected", "");
+      this.activeLink?.removeAttribute("aria-current");
+      target.setAttribute("aria-current", "true");
       this.activeLink = target;
     }
 
