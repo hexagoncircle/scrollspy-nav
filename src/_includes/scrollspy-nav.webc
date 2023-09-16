@@ -121,7 +121,7 @@
 
     setDuration() {
       const value = getComputedStyle(this).getPropertyValue(
-        "--scrollspy-marker-duration"
+        "--scrollspy-nav-marker-duration"
       );
 
       if (!value) return;
@@ -134,7 +134,7 @@
 
     setEasing() {
       const value = getComputedStyle(this).getPropertyValue(
-        "--scrollspy-marker-ease"
+        "--scrollspy-nav-marker-ease"
       );
 
       if (!value) return;
@@ -257,13 +257,13 @@
 
   [data-marker] {
     position: absolute;
-    top: var(--scrollspy-marker-top, initial);
-    bottom: var(--scrollspy-marker-bottom, 0);
+    top: var(--scrollspy-nav-marker-top, initial);
+    bottom: var(--scrollspy-nav-marker-bottom, 0);
     left: 0;
-    background-color: var(--scrollspy-marker-color, currentColor);
+    background-color: var(--scrollspy-nav-marker-color, currentColor);
     z-index: -1;
     width: 1px;
-    height: var(--scrollspy-marker-height, 4px);
+    height: var(--scrollspy-nav-marker-height, 4px);
     transform-origin: left;
   }
 </style>

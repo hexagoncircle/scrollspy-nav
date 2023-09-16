@@ -342,22 +342,22 @@ layout: base
   >
     <ul>
       <li>
-        <a href="#section-3-1">One</a>
+        <a href="#section-3-1">Appetizers</a>
       </li>
       <li>
-        <a href="#section-3-2">A Much Longer Title</a>
+        <a href="#section-3-2">The Main Course</a>
       </li>
       <li>
-        <a href="#section-3-3">Three</a>
+        <a href="#section-3-3">Signature Cocktails</a>
       </li>
       <li>
-        <a href="#section-3-4">Four</a>
+        <a href="#section-3-4">Desserts</a>
       </li>
     </ul>
   </scrollspy-nav>
 
   <article id="section-3-1">
-    <h2>One</h2>
+    <h2>Appetizers</h2>
     <p>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et, quaerat
       veritatis maxime delectus, amet veniam omnis repellendus dolorem
@@ -390,7 +390,7 @@ layout: base
     </p>
   </article>
   <article id="section-3-2">
-    <h2>A Much Longer Title</h2>
+    <h2>The Main Course</h2>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur porro
       quae modi veniam ad neque sunt similique vel necessitatibus ratione,
@@ -417,7 +417,7 @@ layout: base
     </p>
   </article>
   <article id="section-3-3">
-    <h2>Three</h2>
+    <h2>Signature Cocktails</h2>
     <p>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates est
       harum doloremque nobis doloribus dicta labore dignissimos laborum tempore.
@@ -438,7 +438,7 @@ layout: base
     </p>
   </article>
   <article id="section-3-4">
-    <h2>Four</h2>
+    <h2>Desserts</h2>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus provident
       nobis, iste ratione sint a atque ullam fugit, at ut ducimus voluptatem.
@@ -496,19 +496,19 @@ layout: base
   }
 
   .nav-two {
-    --scrollspy-marker-top: 0;
-    --scrollspy-marker-height: 5px;
-    --scrollspy-marker-color: royalblue;
-    --scrollspy-marker-duration: 400ms;
-    --scrollspy-marker-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --scrollspy-nav-marker-top: 0;
+    --scrollspy-nav-marker-height: 5px;
+    --scrollspy-nav-marker-color: royalblue;
+    --scrollspy-nav-marker-duration: 400ms;
+    --scrollspy-nav-marker-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .nav-three {
-    --scrollspy-marker-top: 0;
-    --scrollspy-marker-height: 100%;
-    --scrollspy-marker-color: papayawhip;
-    --scrollspy-marker-duration: 300ms;
-    --scrollspy-marker-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --scrollspy-nav-marker-top: 0;
+    --scrollspy-nav-marker-height: 100%;
+    --scrollspy-nav-marker-color: papayawhip;
+    --scrollspy-nav-marker-duration: 300ms;
+    --scrollspy-nav-marker-ease: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .nav-three > * {
@@ -517,7 +517,7 @@ layout: base
 
   .nav-three a {
     padding-inline: 1.5rem;
-    transition: color var(--scrollspy-marker-duration)
-      var(--scrollspy-marker-ease);
+    transition: color var(--scrollspy-nav-marker-duration)
+      var(--scrollspy-nav-marker-ease);
   }
 </style>
