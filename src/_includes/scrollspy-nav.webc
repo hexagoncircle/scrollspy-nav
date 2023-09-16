@@ -3,10 +3,6 @@
     constructor() {
       super();
 
-      this.attachShadow({ mode: "open" });
-      const slot = document.createElement("slot");
-      this.shadowRoot.appendChild(slot);
-
       this.links = this.querySelectorAll("a");
       this.sectionIds = [...this.links].map((el) => this.getLinkHashValue(el));
       this.activeLink;
