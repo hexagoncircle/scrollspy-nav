@@ -6,7 +6,7 @@ A web component for sticky-positioned page anchor navigation. It observes which 
 - The marker element is configurable through CSS custom properties (or directly with CSS, go nuts).
 - If an active menu item overflows the viewport horizontally, it will be scrolled into view when its related section is visible.
 
-This currently exists as a [WebC](https://www.11ty.dev/docs/languages/webc/) component for use in 11ty + WebC projects.
+This currently exists as a [WebC](https://www.11ty.dev/docs/languages/webc/) component for use in 11ty + WebC projects. However, the `script` and `style` elements can be ported to any type of project.
 
 ## Example
 
