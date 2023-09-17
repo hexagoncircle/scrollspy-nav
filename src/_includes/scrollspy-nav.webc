@@ -248,7 +248,7 @@
   }
 
   scrollspy-nav [aria-current="true"] {
-    color: var(--scrollspy-nav-link-color-active, 1rem);
+    color: var(--scrollspy-nav-link-color-active, currentcolor);
   }
 
   [data-marker] {
