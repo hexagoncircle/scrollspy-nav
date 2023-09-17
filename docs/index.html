@@ -635,6 +635,7 @@ header {
       this.activeLink;
       this.marker;
       this.observer;
+      this.observerOptions = {};
       this.scrollDirection = "up";
       this.prevScrollPos = 0;
       this.duration = 200;
@@ -644,6 +645,7 @@ header {
 
     connectedCallback() {
       document.fonts.ready.then(() => {
+        this.getObserverOptions();
         this.setObserver();
         this.setCSSCustomProps();
         this.createMarker();
@@ -651,22 +653,21 @@ header {
       });
     }
 
-    adjustMenuPosition(link) {
-      const linkRect = link.getBoundingClientRect();
+    adjustMenuPosition(target) {
+      const rect = target.getBoundingClientRect();
       const offset = parseFloat(
         getComputedStyle(this).getPropertyValue("padding-inline-start")
       );
-      const overflowLeft = Math.floor(linkRect.left + offset) < 0;
-      const overflowRight =
-        Math.floor(linkRect.right + offset) > this.offsetWidth;
+      const overflowLeft = Math.floor(rect.left + offset) < 0;
+      const overflowRight = Math.floor(rect.right + offset) > this.offsetWidth;
 
       if (!overflowLeft && !overflowRight) return;
 
       if (overflowLeft) {
-        this.setScrollMenuPosition(this.scrollLeft - offset + linkRect.left);
+        this.setScrollMenuPosition(this.scrollLeft - offset + rect.left);
       } else if (overflowRight) {
         this.setScrollMenuPosition(
-          this.scrollLeft + offset + linkRect.right - this.offsetWidth
+          this.scrollLeft + offset + rect.right - this.offsetWidth
         );
       }
     }
@@ -706,6 +707,18 @@ header {
 
     getLinkHashValue(target) {
       return target.hash.substring(1);
+    }
+
+    getObserverOptions() {
+      const root = this.getAttribute("observer-root");
+      const rootMargin = this.getAttribute("observer-root-margin");
+      const threshold = this.getAttribute("observer-threshold");
+
+      this.observerOptions = {
+        root: document.querySelector(root),
+        rootMargin: rootMargin || "-25% 0% -75% 0%",
+        threshold: Number(threshold),
+      };
     }
 
     getTargetSection(target) {
@@ -797,12 +810,10 @@ header {
         }
       };
 
-      const options = {
-        rootMargin: "-25% 0% -75% 0%",
-        threshold: 0,
-      };
-
-      this.observer = new IntersectionObserver(onIntersect, options);
+      this.observer = new IntersectionObserver(
+        onIntersect,
+        this.observerOptions
+      );
 
       this.sectionIds.forEach((id) => {
         this.observer.observe(document.getElementById(id));

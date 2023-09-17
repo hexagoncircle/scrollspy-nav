@@ -5,6 +5,7 @@ A web component for sticky-positioned page anchor navigation. It observes which 
 - Uses the [FLIP technique](https://css-tricks.com/animating-layouts-with-the-flip-technique/) to animate marker position.
 - The marker element is configurable through CSS custom properties (or directly with CSS, go nuts).
 - If an active menu item overflows the viewport horizontally, it will be scrolled into view when its related section is visible.
+- Configure [intersection observer options](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#intersection_observer_options) with `observer-root`, `observer-root-margin` and `observer-threshold` attributes if it's necessary.
 
 This currently exists as a [WebC](https://www.11ty.dev/docs/languages/webc/) component for use in 11ty + WebC projects. However, the `script` and `style` elements can be ported to any type of project.
 
