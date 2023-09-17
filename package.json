@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "description": "WebC component for sticky-positioned page anchor menus",
   "main": "scrollspy-nav.js",
+  "homepage": "https://hexagoncircle.github.io/scrollspy-nav/",
+  "files": [
+    "scrollspy-nav.**/*"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "start": "eleventy --serve"
+    "start": "eleventy --serve",
+    "minify": "minify scrollspy-nav.js > scrollspy-nav.min.js && minify scrollspy-nav.css > scrollspy-nav.min.css"
   },
   "repository": {
     "type": "git",
