@@ -9,7 +9,7 @@ A web component for sticky-positioned page anchor navigation. It observes which 
 
 This currently exists as a [WebC](https://www.11ty.dev/docs/languages/webc/) component for use in 11ty + WebC projects. However, the `script` and `style` elements can be ported to any type of project.
 
-## Example
+## Examples
 
 Wrap a list of anchor links with the `<scrollspy-nav>` custom element.
 
@@ -31,4 +31,26 @@ Wrap a list of anchor links with the `<scrollspy-nav>` custom element.
 <article id="section-1"></article>
 <article id="section-2"></article>
 <article id="section-3"></article>
+```
+
+### Change intersection point
+
+In the example below, the active link is set once its related section intersects the middle of the viewport.
+
+```html
+<scrollspy-nav observer-root-margin="-50% 0%"></scrollspy-nav>
+```
+
+### Modify marker styles
+
+CSS custom properties are available that can change the marker size, color, and position as well as its animation duration and easing. Below is the CSS used on the second `<scrollspy-nav>` element from [the demo page](https://hexagoncircle.github.io/scrollspy-nav/).
+
+```css
+.custom-nav {
+  --scrollspy-nav-marker-top: 0;
+  --scrollspy-nav-marker-height: 5px;
+  --scrollspy-nav-marker-color: royalblue;
+  --scrollspy-nav-marker-duration: 400ms;
+  --scrollspy-nav-marker-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
 ```

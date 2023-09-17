@@ -262,7 +262,7 @@
     color: var(--scrollspy-nav-link-color-active, currentcolor);
   }
 
-  [data-marker] {
+  scrollspy-nav [data-marker] {
     position: absolute;
     top: var(--scrollspy-nav-marker-top, initial);
     bottom: var(--scrollspy-nav-marker-bottom, 0);
