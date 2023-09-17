@@ -1,4 +1,4 @@
-# scrollspy-nav
+# `<scrollspy-nav>`
 
 A web component for sticky-positioned page anchor navigation. It observes which section of a page is visible, sets an `aria-current` attribute on the active link, and animates a marker indicator over to it.
 
