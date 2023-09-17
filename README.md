@@ -1,10 +1,10 @@
 # `<scrollspy-nav>`
 
-A web component for sticky-positioned page anchor navigation. It observes which section of a page is visible, sets an `aria-current` attribute on the active link, and animates a marker indicator over to it. Check it out on [the demo page](https://hexagoncircle.github.io/scrollspy-nav/).
+A web component for sticky-positioned page anchor navigation. It [observes](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) which section of a page is visible, sets an `aria-current` attribute on the active link element, and animates a marker indicator over to it. Check it out on [the demo page](https://hexagoncircle.github.io/scrollspy-nav/). 👀
 
 - Uses the [FLIP technique](https://css-tricks.com/animating-layouts-with-the-flip-technique/) to animate marker position.
 - The marker element is configurable through CSS custom properties (or directly with CSS, go nuts).
-- If an active menu item overflows the viewport horizontally, it will be scrolled into view when its related section is visible.
+- If a menu item is obscured in the viewport overflow horizontally, when it becomes active it will be scrolled fully into view.
 - Configure [intersection observer options](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#intersection_observer_options) with `observer-root`, `observer-root-margin` and `observer-threshold` attributes if it's necessary.
 - Available as a [WebC](https://www.11ty.dev/docs/languages/webc/) component for use in 11ty + WebC projects.
 
