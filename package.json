@@ -2,7 +2,7 @@
   "name": "@hexagoncircle/scrollspy-nav",
   "version": "1.0.0",
   "description": "WebC component for sticky-positioned page anchor menus",
-  "main": "src/_includes/scrollspy-nav.webc",
+  "main": "scrollspy-nav.js",
   "scripts": {
     "start": "eleventy --serve"
   },

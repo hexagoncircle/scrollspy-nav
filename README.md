@@ -6,8 +6,13 @@ A web component for sticky-positioned page anchor navigation. It observes which 
 - The marker element is configurable through CSS custom properties (or directly with CSS, go nuts).
 - If an active menu item overflows the viewport horizontally, it will be scrolled into view when its related section is visible.
 - Configure [intersection observer options](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#intersection_observer_options) with `observer-root`, `observer-root-margin` and `observer-threshold` attributes if it's necessary.
+- Available as a [WebC](https://www.11ty.dev/docs/languages/webc/) component for use in 11ty + WebC projects.
 
-This currently exists as a [WebC](https://www.11ty.dev/docs/languages/webc/) component for use in 11ty + WebC projects. However, the `script` and `style` elements can be ported to any type of project.
+## Usage
+
+- Add the `scrollspy-nav.css` file to the `<head>` or move its rulesets into the page's CSS file.
+- Add the `scrollspy-nav.js` before the closing `</body>` tag.
+- _or_, import as a WebC component to a project.
 
 ## Examples
 
