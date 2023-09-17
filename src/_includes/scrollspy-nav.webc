@@ -220,7 +220,7 @@
     display: flex;
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    background-color: Canvas;
+    background-color: var(--scrollspy-nav-background-color, Canvas);
   }
 
   scrollspy-nav::-webkit-scrollbar {
@@ -231,24 +231,24 @@
     margin: 0 auto;
     padding: 0;
     display: flex;
-    gap: 2rem;
+    gap: var(--scrollspy-nav-list-gap, 2rem);
     list-style: none;
   }
 
-  scrollspy-nav * {
+  scrollspy-nav li {
     position: relative;
   }
 
   scrollspy-nav a {
     display: block;
-    margin-block: 1rem;
+    margin-block: var(--scrollspy-nav-link-margin-block, 1rem);
     text-decoration: none;
     white-space: nowrap;
-    outline-offset: 4px;
+    outline-offset: var(--scrollspy-nav-link-outline-offset, 4px);
   }
 
   scrollspy-nav [aria-current="true"] {
-    color: currentcolor;
+    color: var(--scrollspy-nav-link-color-active, 1rem);
   }
 
   [data-marker] {
