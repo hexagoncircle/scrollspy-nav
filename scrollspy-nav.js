@@ -3,7 +3,7 @@ class ScrollSpyNav extends HTMLElement {
     super();
 
     this.links = this.querySelectorAll("a");
-    this.sectionIds = [...this.links].map((el) => this.getLinkHashValue(el));
+    this.sections;
     this.activeLink;
     this.marker;
     this.observer;
@@ -17,6 +17,7 @@ class ScrollSpyNav extends HTMLElement {
 
   connectedCallback() {
     document.fonts.ready.then(() => {
+      this.getSections();
       this.getObserverOptions();
       this.setObserver();
       this.setCSSCustomProps();
@@ -44,8 +45,8 @@ class ScrollSpyNav extends HTMLElement {
     }
   }
 
-  animateMarker(target) {
-    const last = target.getBoundingClientRect();
+  animateMarker(el) {
+    const last = el.getBoundingClientRect();
     const first = this.activeLink?.getBoundingClientRect() || last;
     const deltaX = first.left - last.left;
     const reducedMotion = window.matchMedia(
@@ -65,8 +66,8 @@ class ScrollSpyNav extends HTMLElement {
       fill: "forwards",
     };
 
-    target.after(this.marker);
-    this.setActiveLink(target);
+    el.after(this.marker);
+    this.setActiveLink(el);
     this.marker.animate(keyframes, options);
   }
 
@@ -74,10 +75,6 @@ class ScrollSpyNav extends HTMLElement {
     const el = document.createElement("div");
     el.setAttribute("data-marker", "");
     this.marker = el;
-  }
-
-  getLinkHashValue(target) {
-    return target.hash.substring(1);
   }
 
   getObserverOptions() {
@@ -92,14 +89,10 @@ class ScrollSpyNav extends HTMLElement {
     };
   }
 
-  getTargetSection(target) {
-    if (this.scrollDirection === "up") return target;
-
-    if (target.nextElementSibling) {
-      return target.nextElementSibling;
-    } else {
-      return target;
-    }
+  getSections() {
+    this.sections = [...this.links].map((link) =>
+      document.querySelector(`${link.hash}`)
+    );
   }
 
   handleSmoothScrollOnClick() {
@@ -152,28 +145,15 @@ class ScrollSpyNav extends HTMLElement {
     this.ease = value;
   }
 
-  setScrollDirection() {
-    if (window.scrollTop > this.prevScrollPos) {
-      this.scrollDirection = "down";
-    } else {
-      this.scrollDirection = "up";
-    }
-
-    this.prevScrollPos = window.scrollTop;
-  }
-
   setObserver() {
     const onIntersect = (entries) => {
       entries.forEach((entry) => {
-        this.setScrollDirection();
-
-        if (!this.shouldUpdate(entry)) return;
+        if (!entry.isIntersecting) return;
 
         const link = this.querySelector(`[href="#${entry.target.id}"`);
-        const target = this.getTargetSection(link);
 
-        this.animateMarker(target);
-        this.adjustMenuPosition(target);
+        this.animateMarker(link);
+        this.adjustMenuPosition(link);
       });
 
       if (!this.activeLink) {
@@ -183,15 +163,13 @@ class ScrollSpyNav extends HTMLElement {
 
     this.observer = new IntersectionObserver(onIntersect, this.observerOptions);
 
-    this.sectionIds.forEach((id) => {
-      this.observer.observe(document.getElementById(id));
-    });
+    this.sections.forEach((section) => this.observer.observe(section));
   }
 
-  setActiveLink(target) {
+  setActiveLink(el) {
     this.activeLink?.removeAttribute("aria-current");
-    target.setAttribute("aria-current", "true");
-    this.activeLink = target;
+    el.setAttribute("aria-current", "true");
+    this.activeLink = el;
   }
 
   setScrollMenuPosition(value) {
@@ -199,18 +177,6 @@ class ScrollSpyNav extends HTMLElement {
       left: value,
       behavior: "smooth",
     });
-  }
-
-  shouldUpdate(entry) {
-    if (this.scrollDirection === "down" && !entry.isIntersecting) {
-      return true;
-    }
-
-    if (this.scrollDirection === "up" && entry.isIntersecting) {
-      return true;
-    }
-
-    return false;
   }
 }
 
