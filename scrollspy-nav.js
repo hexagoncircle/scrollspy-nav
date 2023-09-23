@@ -30,7 +30,7 @@ class ScrollSpyNav extends HTMLElement {
     const offset = parseFloat(
       getComputedStyle(this).getPropertyValue("padding-inline-start")
     );
-    const overflowLeft = Math.floor(rect.left + offset) < 0;
+    const overflowLeft = Math.floor(rect.left - offset) < 0;
     const overflowRight = Math.floor(rect.right + offset) > this.offsetWidth;
 
     if (!overflowLeft && !overflowRight) return;
