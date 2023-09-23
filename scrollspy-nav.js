@@ -45,30 +45,29 @@ class ScrollSpyNav extends HTMLElement {
   }
 
   animateMarker(target) {
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
     const last = target.getBoundingClientRect();
     const first = this.activeLink?.getBoundingClientRect() || last;
     const deltaX = first.left - last.left;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const keyframes = [
+      {
+        transform: `translateX(${deltaX}px) scaleX(${first.width})`,
+      },
+      { transform: `translateX(0) scaleX(${last.width})` },
+    ];
+
+    const options = {
+      duration: reducedMotion ? 0 : this.duration,
+      easing: this.ease,
+      fill: "forwards",
+    };
 
     target.after(this.marker);
-
-    this.marker.animate(
-      [
-        {
-          transform: `translateX(${deltaX}px) scaleX(${first.width})`,
-        },
-        { transform: `translateX(0) scaleX(${last.width})` },
-      ],
-      {
-        duration: reducedMotion ? 0 : this.duration,
-        easing: this.ease,
-        fill: "forwards",
-      }
-    );
-
     this.setActiveLink(target);
+    this.marker.animate(keyframes, options);
   }
 
   createMarker() {
