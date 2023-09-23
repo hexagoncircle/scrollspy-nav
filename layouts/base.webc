@@ -9,6 +9,10 @@
       content="A WebC component for sticky-positioned page anchor
     navigation menus"
     />
+    <link
+      rel="icon"
+      href="https://ryanmulligan.dev/assets/favicon/favicon.svg"
+    />
     <style @raw="getBundle('css')" webc:keep></style>
   </head>
   <body>
