@@ -16,7 +16,7 @@ class ScrollSpyNav extends HTMLElement {
     this.getSections();
     this.getObserverOptions();
     this.setCSSCustomProps();
-    this.handleSmoothScrollOnClick();
+    this.handleClick();
 
     document.addEventListener("readystatechange", (e) => {
       if (e.target.readyState === "complete") {
@@ -106,17 +106,27 @@ class ScrollSpyNav extends HTMLElement {
     });
   }
 
-  handleSmoothScrollOnClick() {
-    const handleObserver = () => {
-      if (this.observer) return;
-      this.setObserver();
-    };
-
+  handleClick() {
     this.addEventListener("click", () => {
       if (!this.observer) return;
       this.observer.disconnect();
       this.observer = null;
+      this.handleScroll();
     });
+  }
+
+  handleScroll() {
+    const handleObserver = (e) => {
+      if (this.observer) return;
+
+      this.setObserver();
+
+      if ("onscrollend" in window) {
+        document.removeEventListener("scrollend", handleObserver);
+      } else {
+        document.removeEventListener("scroll", handleObserver);
+      }
+    };
 
     if ("onscrollend" in window) {
       document.addEventListener("scrollend", handleObserver);
