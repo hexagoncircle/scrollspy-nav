@@ -663,13 +663,15 @@ header {
 
     if (!overflowLeft && !overflowRight) return;
 
+    let value;
+
     if (overflowLeft) {
-      this.setMenuScrollPosition(this.scrollLeft - offset + rect.left);
+      value = this.scrollLeft - offset + rect.left;
     } else if (overflowRight) {
-      this.setMenuScrollPosition(
-        this.scrollLeft + offset + rect.right - this.offsetWidth
-      );
+      value = this.scrollLeft + offset + rect.right - this.offsetWidth;
     }
+
+    this.setMenuScrollPosition(value);
   }
 
   animateMarker(el) {
@@ -807,7 +809,6 @@ header {
     };
 
     this.observer = new IntersectionObserver(onIntersect, this.observerOptions);
-
     this.sections.forEach((section) => this.observer.observe(section));
   }
 

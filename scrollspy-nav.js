@@ -36,13 +36,15 @@ class ScrollSpyNav extends HTMLElement {
 
     if (!overflowLeft && !overflowRight) return;
 
+    let value;
+
     if (overflowLeft) {
-      this.setMenuScrollPosition(this.scrollLeft - offset + rect.left);
+      value = this.scrollLeft - offset + rect.left;
     } else if (overflowRight) {
-      this.setMenuScrollPosition(
-        this.scrollLeft + offset + rect.right - this.offsetWidth
-      );
+      value = this.scrollLeft + offset + rect.right - this.offsetWidth;
     }
+
+    this.setMenuScrollPosition(value);
   }
 
   animateMarker(el) {
