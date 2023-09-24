@@ -34,7 +34,7 @@ class ScrollSpyNav extends HTMLElement {
 
     if (!overflowLeft && !overflowRight) return;
 
-    let value;
+    let value = 0;
 
     if (overflowLeft) {
       value = this.scrollLeft - offset + rect.left;
@@ -42,7 +42,10 @@ class ScrollSpyNav extends HTMLElement {
       value = this.scrollLeft + offset + rect.right - this.offsetWidth;
     }
 
-    this.setMenuScrollPosition(value);
+    this.scrollTo({
+      left: value,
+      behavior: this.reducedMotion() ? "auto" : "smooth",
+    });
   }
 
   animateMarker(el) {
@@ -190,13 +193,6 @@ class ScrollSpyNav extends HTMLElement {
 
     this.observer = new IntersectionObserver(onIntersect, this.observerOptions);
     this.sections.forEach((section) => this.observer.observe(section));
-  }
-
-  setMenuScrollPosition(value) {
-    this.scrollTo({
-      left: value,
-      behavior: this.reducedMotion() ? "auto" : "smooth",
-    });
   }
 }
 
