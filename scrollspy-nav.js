@@ -77,10 +77,6 @@ class ScrollSpyNav extends HTMLElement {
     this.marker = el;
   }
 
-  getProp(value) {
-    return getComputedStyle(this).getPropertyValue(value);
-  }
-
   getObserverOptions() {
     const root = this.getAttribute("observer-root");
     const rootMargin = this.getAttribute("observer-root-margin");
@@ -91,6 +87,10 @@ class ScrollSpyNav extends HTMLElement {
       rootMargin: rootMargin || "-25% 0% -75% 0%",
       threshold: Number(threshold),
     };
+  }
+
+  getProp(value) {
+    return getComputedStyle(this).getPropertyValue(value);
   }
 
   getSections() {
