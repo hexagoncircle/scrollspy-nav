@@ -8,7 +8,7 @@ A web component for sticky-positioned page anchor navigation. It [observes](http
 - Configure [intersection observer options](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#intersection_observer_options) with `observer-root`, `observer-root-margin` and `observer-threshold` attributes if it's necessary.
 - Available as a [WebC](https://www.11ty.dev/docs/languages/webc/) component for use in 11ty + WebC projects.
 
-## Usage
+## Getting started
 
 - Add the `scrollspy-nav.css` file to the `<head>` or move its rulesets into the page's CSS file.
 - Add the `scrollspy-nav.js` before the closing `</body>` tag.
