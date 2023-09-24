@@ -2,26 +2,27 @@ class ScrollSpyNav extends HTMLElement {
   constructor() {
     super();
 
-    this.links = this.querySelectorAll("a");
-    this.sections = [];
     this.activeLink;
+    this.duration = 200;
+    this.ease = "cubic-bezier(0.25, 1, 0.5, 1)";
+    this.links = this.querySelectorAll("a");
     this.marker;
     this.observer;
     this.observerOptions = {};
-    this.scrollDirection = "up";
-    this.prevScrollPos = 0;
-    this.duration = 200;
-    this.ease = "cubic-bezier(0.25, 1, 0.5, 1)";
+    this.sections = [];
   }
 
   connectedCallback() {
-    document.fonts.ready.then(() => {
-      this.getSections();
-      this.getObserverOptions();
-      this.setObserver();
-      this.setCSSCustomProps();
-      this.createMarker();
-      this.handleSmoothScrollOnClick();
+    this.getSections();
+    this.getObserverOptions();
+    this.setCSSCustomProps();
+    this.handleSmoothScrollOnClick();
+
+    document.addEventListener("readystatechange", (e) => {
+      if (e.target.readyState === "complete") {
+        this.setObserver();
+        this.createMarker();
+      }
     });
   }
 
@@ -36,9 +37,9 @@ class ScrollSpyNav extends HTMLElement {
     if (!overflowLeft && !overflowRight) return;
 
     if (overflowLeft) {
-      this.setScrollMenuPosition(this.scrollLeft - offset + rect.left);
+      this.setMenuScrollPosition(this.scrollLeft - offset + rect.left);
     } else if (overflowRight) {
-      this.setScrollMenuPosition(
+      this.setMenuScrollPosition(
         this.scrollLeft + offset + rect.right - this.offsetWidth
       );
     }
@@ -128,6 +129,12 @@ class ScrollSpyNav extends HTMLElement {
     }
   }
 
+  setActiveLink(el) {
+    this.activeLink?.removeAttribute("aria-current");
+    el.setAttribute("aria-current", "true");
+    this.activeLink = el;
+  }
+
   setCSSCustomProps() {
     this.setDuration();
     this.setEasing();
@@ -173,17 +180,10 @@ class ScrollSpyNav extends HTMLElement {
     };
 
     this.observer = new IntersectionObserver(onIntersect, this.observerOptions);
-
     this.sections.forEach((section) => this.observer.observe(section));
   }
 
-  setActiveLink(el) {
-    this.activeLink?.removeAttribute("aria-current");
-    el.setAttribute("aria-current", "true");
-    this.activeLink = el;
-  }
-
-  setScrollMenuPosition(value) {
+  setMenuScrollPosition(value) {
     this.scrollTo({
       left: value,
       behavior: "smooth",

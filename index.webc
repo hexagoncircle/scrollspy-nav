@@ -522,6 +522,11 @@ layout: base
   scrollspy-nav {
     margin-inline: calc(var(--page-gutters) * -1);
     padding-inline: var(--page-gutters);
+    scrollbar-width: none;
+  }
+
+  scrollspy-nav::-webkit-scrollbar {
+    display: none;
   }
 
   article {
