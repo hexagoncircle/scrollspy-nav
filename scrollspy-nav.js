@@ -49,19 +49,14 @@ class ScrollSpyNav extends HTMLElement {
     const last = el.getBoundingClientRect();
     const first = this.activeLink?.getBoundingClientRect() || last;
     const deltaX = first.left - last.left;
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
 
     const keyframes = [
-      {
-        transform: `translateX(${deltaX}px) scaleX(${first.width})`,
-      },
+      { transform: `translateX(${deltaX}px) scaleX(${first.width})` },
       { transform: `translateX(0) scaleX(${last.width})` },
     ];
 
     const options = {
-      duration: reducedMotion ? 0 : this.duration,
+      duration: this.reducedMotion() ? 0 : this.duration,
       easing: this.ease,
       fill: "forwards",
     };
@@ -133,6 +128,10 @@ class ScrollSpyNav extends HTMLElement {
     }
   }
 
+  reducedMotion() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
   setActiveLink(el) {
     this.activeLink?.removeAttribute("aria-current");
     el.setAttribute("aria-current", "true");
@@ -186,7 +185,7 @@ class ScrollSpyNav extends HTMLElement {
   setMenuScrollPosition(value) {
     this.scrollTo({
       left: value,
-      behavior: "smooth",
+      behavior: this.reducedMotion() ? "auto" : "smooth",
     });
   }
 }
