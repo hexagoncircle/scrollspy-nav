@@ -2,8 +2,9 @@ class ScrollSpyNav extends HTMLElement {
   constructor() {
     super();
 
+    this.name = "scrollspy-nav";
     this.links = this.querySelectorAll("a");
-    this.sections;
+    this.sections = [];
     this.activeLink;
     this.marker;
     this.observer;
@@ -90,9 +91,21 @@ class ScrollSpyNav extends HTMLElement {
   }
 
   getSections() {
-    this.sections = [...this.links].map((link) =>
-      document.querySelector(`${link.hash}`)
-    );
+    [...this.links].map((link) => {
+      if (new URL(link.href).host !== window.location.host) return;
+
+      const el = document.querySelector(link.hash);
+      const value = link.hash.substring(1);
+
+      if (!el) {
+        console.warn(
+          `${this.name}: Element with id "${value}" doesn't exist on this page.`
+        );
+        return;
+      }
+
+      this.sections.push(el);
+    });
   }
 
   handleSmoothScrollOnClick() {
