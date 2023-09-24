@@ -28,9 +28,7 @@ class ScrollSpyNav extends HTMLElement {
 
   adjustMenuPosition(el) {
     const rect = el.getBoundingClientRect();
-    const offset = parseFloat(
-      getComputedStyle(this).getPropertyValue("padding-inline-start")
-    );
+    const offset = parseFloat(this.getProp("padding-inline-start"));
     const overflowLeft = Math.floor(rect.left - offset) < 0;
     const overflowRight = Math.floor(rect.right + offset) > this.offsetWidth;
 
@@ -77,6 +75,10 @@ class ScrollSpyNav extends HTMLElement {
     const el = document.createElement("div");
     el.setAttribute("data-marker", "");
     this.marker = el;
+  }
+
+  getProp(value) {
+    return getComputedStyle(this).getPropertyValue(value);
   }
 
   getObserverOptions() {
@@ -143,9 +145,7 @@ class ScrollSpyNav extends HTMLElement {
   }
 
   setDuration() {
-    const value = getComputedStyle(this).getPropertyValue(
-      "--scrollspy-nav-marker-duration"
-    );
+    const value = this.getProp("--scrollspy-nav-marker-duration");
 
     if (!value) return;
 
@@ -156,9 +156,7 @@ class ScrollSpyNav extends HTMLElement {
   }
 
   setEasing() {
-    const value = getComputedStyle(this).getPropertyValue(
-      "--scrollspy-nav-marker-ease"
-    );
+    const value = this.getProp("--scrollspy-nav-marker-ease");
 
     if (!value) return;
 
