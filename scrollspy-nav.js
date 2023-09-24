@@ -116,7 +116,7 @@ class ScrollSpyNav extends HTMLElement {
   }
 
   handleScroll() {
-    const handleObserver = (e) => {
+    const handleObserver = () => {
       if (this.observer) return;
 
       this.setObserver();
