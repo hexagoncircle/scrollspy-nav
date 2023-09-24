@@ -2,7 +2,6 @@ class ScrollSpyNav extends HTMLElement {
   constructor() {
     super();
 
-    this.name = "scrollspy-nav";
     this.links = this.querySelectorAll("a");
     this.sections = [];
     this.activeLink;
@@ -13,7 +12,6 @@ class ScrollSpyNav extends HTMLElement {
     this.prevScrollPos = 0;
     this.duration = 200;
     this.ease = "cubic-bezier(0.25, 1, 0.5, 1)";
-    this.ready;
   }
 
   connectedCallback() {
@@ -27,8 +25,8 @@ class ScrollSpyNav extends HTMLElement {
     });
   }
 
-  adjustMenuPosition(target) {
-    const rect = target.getBoundingClientRect();
+  adjustMenuPosition(el) {
+    const rect = el.getBoundingClientRect();
     const offset = parseFloat(
       getComputedStyle(this).getPropertyValue("padding-inline-start")
     );
@@ -99,7 +97,7 @@ class ScrollSpyNav extends HTMLElement {
 
       if (!el) {
         console.warn(
-          `${this.name}: Element with id "${value}" doesn't exist on this page.`
+          `${this.constructor.name}: Element with id "${value}" doesn't exist on this page.`
         );
         return;
       }
