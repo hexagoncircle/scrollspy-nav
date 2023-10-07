@@ -4,15 +4,15 @@ A web component for sticky-positioned page anchor navigation. It [observes](http
 
 - Uses the [FLIP technique](https://css-tricks.com/animating-layouts-with-the-flip-technique/) to animate marker position.
 - The marker element is configurable through CSS custom properties (or directly with CSS, go nuts).
-- If a menu item is obscured in the viewport overflow horizontally, when it becomes active it will be scrolled fully into view.
+- If a menu item is obscured in the viewport overflow horizontally, it will be scrolled fully into view once active.
 - Configure [intersection observer options](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#intersection_observer_options) with `observer-root`, `observer-root-margin` and `observer-threshold` attributes if it's necessary.
 - Available as a [WebC](https://www.11ty.dev/docs/languages/webc/) component for use in 11ty + WebC projects.
 
 ## Getting started
 
-- Add the `scrollspy-nav.css` file to the `<head>` or move its rulesets into the page's CSS file.
-- Add the `scrollspy-nav.js` before the closing `</body>` tag.
-- _or_, import as a WebC component to a project.
+- `scrollspy-nav.css` adds some baseline styles to set up the horizontal menu and overflow scrolling. Include this with the page styles.
+- Add `scrollspy-nav.js` to the bundle.
+- _or_ import it as a WebC component into a project.
 
 ## Examples
 

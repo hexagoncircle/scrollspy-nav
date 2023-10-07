@@ -642,7 +642,7 @@ header {
   connectedCallback() {
     this.getSections();
     this.getObserverOptions();
-    this.setCSSCustomProps();
+    this.setAnimationProps();
     this.handleClick();
 
     document.addEventListener("readystatechange", (e) => {
@@ -655,7 +655,7 @@ header {
 
   adjustMenuPosition(el) {
     const rect = el.getBoundingClientRect();
-    const offset = parseFloat(this.getProp("padding-inline-start"));
+    const offset = parseFloat(this.getCSSProp("padding-inline-start"));
     const overflowLeft = Math.floor(rect.left - offset) < 0;
     const overflowRight = Math.floor(rect.right + offset) > this.offsetWidth;
 
@@ -714,7 +714,7 @@ header {
     };
   }
 
-  getProp(value) {
+  getCSSProp(value) {
     return getComputedStyle(this).getPropertyValue(value);
   }
 
@@ -778,13 +778,13 @@ header {
     this.activeLink = el;
   }
 
-  setCSSCustomProps() {
+  setAnimationProps() {
     this.setDuration();
     this.setEasing();
   }
 
   setDuration() {
-    const value = this.getProp("--scrollspy-nav-marker-duration");
+    const value = this.getCSSProp("--scrollspy-nav-marker-duration");
 
     if (!value) return;
 
@@ -795,7 +795,7 @@ header {
   }
 
   setEasing() {
-    const value = this.getProp("--scrollspy-nav-marker-ease");
+    const value = this.getCSSProp("--scrollspy-nav-marker-ease");
 
     if (!value) return;
 
@@ -823,7 +823,7 @@ header {
   }
 }
 
-if (typeof window !== "undefined" && "customElements" in window) {
+if ("customElements" in window) {
   window.customElements.define("scrollspy-nav", ScrollSpyNav);
 }</script>
   

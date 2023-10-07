@@ -15,7 +15,7 @@ class ScrollSpyNav extends HTMLElement {
   connectedCallback() {
     this.getSections();
     this.getObserverOptions();
-    this.setCSSCustomProps();
+    this.setAnimationProps();
     this.handleClick();
 
     document.addEventListener("readystatechange", (e) => {
@@ -28,7 +28,7 @@ class ScrollSpyNav extends HTMLElement {
 
   adjustMenuPosition(el) {
     const rect = el.getBoundingClientRect();
-    const offset = parseFloat(this.getProp("padding-inline-start"));
+    const offset = parseFloat(this.getCSSProp("padding-inline-start"));
     const overflowLeft = Math.floor(rect.left - offset) < 0;
     const overflowRight = Math.floor(rect.right + offset) > this.offsetWidth;
 
@@ -87,7 +87,7 @@ class ScrollSpyNav extends HTMLElement {
     };
   }
 
-  getProp(value) {
+  getCSSProp(value) {
     return getComputedStyle(this).getPropertyValue(value);
   }
 
@@ -151,13 +151,13 @@ class ScrollSpyNav extends HTMLElement {
     this.activeLink = el;
   }
 
-  setCSSCustomProps() {
+  setAnimationProps() {
     this.setDuration();
     this.setEasing();
   }
 
   setDuration() {
-    const value = this.getProp("--scrollspy-nav-marker-duration");
+    const value = this.getCSSProp("--scrollspy-nav-marker-duration");
 
     if (!value) return;
 
@@ -168,7 +168,7 @@ class ScrollSpyNav extends HTMLElement {
   }
 
   setEasing() {
-    const value = this.getProp("--scrollspy-nav-marker-ease");
+    const value = this.getCSSProp("--scrollspy-nav-marker-ease");
 
     if (!value) return;
 
@@ -196,6 +196,6 @@ class ScrollSpyNav extends HTMLElement {
   }
 }
 
-if (typeof window !== "undefined" && "customElements" in window) {
+if ("customElements" in window) {
   window.customElements.define("scrollspy-nav", ScrollSpyNav);
 }
