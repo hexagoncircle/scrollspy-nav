@@ -767,25 +767,25 @@ header {
   }
 
   handleScroll() {
-    const handleObserver = () => {
+    const handleScrollEnd = () => {
       if (this.observer) return;
 
       this.setObserver();
+      document.removeEventListener("scrollend", handleScrollEnd);
+    };
 
-      if ("onscrollend" in window) {
-        document.removeEventListener("scrollend", handleObserver);
-      } else {
-        document.removeEventListener("scroll", handleObserver);
-      }
+    const handleScroll = () => {
+      if (this.observer) return;
+
+      clearTimeout(this.scrollEndTimer);
+      this.scrollEndTimer = setTimeout(() => this.setObserver(), 100);
+      document.removeEventListener("scroll", handleScroll);
     };
 
     if ("onscrollend" in window) {
-      document.addEventListener("scrollend", handleObserver);
+      document.addEventListener("scrollend", handleScrollEnd);
     } else {
-      document.addEventListener("scroll", () => {
-        clearTimeout(this.scrollEndTimer);
-        this.scrollEndTimer = setTimeout(handleObserver, 100);
-      });
+      document.addEventListener("scroll", handleScroll);
     }
   }
 
